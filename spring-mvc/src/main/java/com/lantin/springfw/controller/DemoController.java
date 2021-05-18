@@ -1,4 +1,4 @@
-package com.lantin.controller;
+package com.lantin.springfw.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

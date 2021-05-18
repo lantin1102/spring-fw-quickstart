@@ -13,8 +13,9 @@
 
     <!-- bean definitions here -->
 
+
     <!--开启注解扫描-->
-    <context:component-scan base-package="com.lantin"/>
+    <context:component-scan base-package="com.lantin.springfw"/>
     <!--采用基于注解的handler mapping-->
     <mvc:annotation-driven/>
     <!-- 配置视图解析器 没有使用jsp可以不配置-->
@@ -26,4 +27,13 @@
     会覆盖tomcat的web.xml中的defaultServlet的缺省路径 / ，
     只有tomcat的defaultServlet 才能处理静态资源 html，jsp文件等，所以这里要配置以释放静态资源-->
     <mvc:default-servlet-handler/>
+
+    <!-- xml方式配置拦截器 -->
+    <mvc:interceptors >
+       <mvc:interceptor>
+           <mvc:mapping path="/**"/>
+           <bean class="com.lantin.springfw.interceptor.DemoInterceptor"/>
+       </mvc:interceptor>
+    </mvc:interceptors>
+
 </beans>
