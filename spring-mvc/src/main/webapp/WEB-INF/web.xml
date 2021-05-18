@@ -5,15 +5,17 @@
          http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
 
-    <!---->
+    <!-- 配置mvc前端控制器-->
     <servlet>
         <servlet-name>DispatcherServlet</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <!--加载mvc config的xml文件 创建mvc容器-->
         <init-param>
             <param-name>contextConfigLocation</param-name>
             <param-value>classpath*:spring-mvc.xml</param-value>
         </init-param>
     </servlet>
+    <!--前端控制器匹配路径 缺省匹配-->
     <servlet-mapping>
         <servlet-name>DispatcherServlet</servlet-name>
         <url-pattern>/</url-pattern>

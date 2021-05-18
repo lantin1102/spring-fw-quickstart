@@ -13,15 +13,17 @@
 
     <!-- bean definitions here -->
 
-
+    <!--开启注解扫描-->
     <context:component-scan base-package="com.lantin"/>
-
+    <!--采用基于注解的handler mapping-->
     <mvc:annotation-driven/>
-
+    <!-- 配置视图解析器 没有使用jsp可以不配置-->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="WEB-INF/jsp/"/>
         <property name="suffix" value=".jsp"/>
     </bean>
-    <!-- -->
+    <!-- 释放静态资源 因为 dispatchServlet配置了 / 匹配路径后 ，
+    会覆盖tomcat的web.xml中的defaultServlet的缺省路径 / ，
+    只有tomcat的defaultServlet 才能处理静态资源 html，jsp文件等，所以这里要配置以释放静态资源-->
     <mvc:default-servlet-handler/>
 </beans>
