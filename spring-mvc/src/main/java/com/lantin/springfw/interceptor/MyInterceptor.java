@@ -11,8 +11,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Lantin
  */
-public class MyInterceptor implements HandlerInterceptor
-{
+public class MyInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         return true;
@@ -27,4 +26,6 @@ public class MyInterceptor implements HandlerInterceptor
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
 
     }
+
+
 }
