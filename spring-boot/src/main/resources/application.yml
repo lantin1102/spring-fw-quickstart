@@ -1,0 +1,6 @@
+# 激活的配置文件
+spring:
+  profiles:
+    active: dev
+
+
