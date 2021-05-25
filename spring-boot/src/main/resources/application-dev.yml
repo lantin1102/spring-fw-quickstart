@@ -10,3 +10,13 @@ server:
 spring:
   application:
     name: spring-boot-demo
+
+custom:
+  thread-pool:
+    core-pool-size: 5
+    max-pool-size: 10
+    # 默认为秒
+    keep-alive-seconds: 60
+    queue-capacity: 100
+    thread-name-prefix: lantin-testThread-
+
