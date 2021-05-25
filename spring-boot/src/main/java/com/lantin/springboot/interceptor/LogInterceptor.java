@@ -18,9 +18,9 @@ public class LogInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 
+        logAsyncUtil.processLog();
 
-
-
+        System.out.println("日志处理完毕");
         return true;
     }
 }
