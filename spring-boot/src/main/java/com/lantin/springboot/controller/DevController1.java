@@ -8,11 +8,16 @@ package com.lantin.springboot.controller;
 public class DevController1 {
 
 
-
-
-    public void dev2(){
+    public void dev2() {
 
 
         System.out.println("dev222222开发完成了");
+
+    }
+
+
+    public void dev1() {
+        System.out.println("dev111111开发中");
+
     }
 }
