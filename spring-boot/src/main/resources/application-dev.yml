@@ -10,3 +10,44 @@ server:
 spring:
   application:
     name: spring-boot-demo
+  #  mvc:
+  #    format:
+  #      date-time: yyyy-MM-dd HH:mm:ss
+  #      date: yyyy-MM-dd HH:mm:ss
+  # mysql数据源相关配置 type配置不同的数据源
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://localhost:3306/shiro?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    password: 123456
+    connect-timeout: 500
+    timeout: 1500
+redisson:
+  address: redis://127.0.0.1:6379
+  connect-timeout: 2000
+  timeout: 10000
+  password: 123456
+  lettuce:
+    pool:
+      max-active: 8
+      max-wait: -1
+      max-idle: 8
+      min-idle: 0
+lantin:
+  framework:
+    swagger2:
+      base-package: com.lantin.springboot.controller
+  thread-pool:
+    core_pool_size: 5
+    max-pool-size: 10
+    # 默认为秒
+    keep-alive-seconds: 60
+    queue-capacity: 100
+    thread-name-prefix: lantin-testThread-
+
+

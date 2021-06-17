@@ -14,18 +14,24 @@
     <packaging>pom</packaging>
 
     <properties>
+        <!--项目属性，插件版本管理-->
         <java.version>11</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>${java.version}</maven.compiler.source>
-        <maven.compiler.tartget>${java.version}</maven.compiler.tartget>
-
+        <maven.compiler.target>${java.version}</maven.compiler.target>
+        <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
+        <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
+        <!--依赖包版本-->
+        <ali.fastjson.version>1.2.75</ali.fastjson.version>
+        <ali.druid.version>1.2.6</ali.druid.version>
         <jackson.version>2.9.8</jackson.version>
         <spring.boot.version>2.4.5</spring.boot.version>
         <spring.framework.version>5.3.6</spring.framework.version>
         <servlet.version>4.0.1</servlet.version>
-
-        <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
-        <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
+        <spring-native.version>0.10.0-SNAPSHOT</spring-native.version>
+        <swagger.version>3.0.0</swagger.version>
+        <knife4j.version>3.0.2</knife4j.version>
+        <redisson.version>3.11.2</redisson.version>
     </properties>
 
     <dependencyManagement>
@@ -51,8 +57,37 @@
                 <version>${servlet.version}</version>
                 <scope>provided</scope>
             </dependency>
-            <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
+            <dependency>
+                <groupId>org.springframework.experimental</groupId>
+                <artifactId>spring-native</artifactId>
+                <version>${spring-native.version}</version>
+            </dependency>
+            <!--druid数据源依赖-->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid-spring-boot-starter</artifactId>
+                <version>${ali.druid.version}</version>
+            </dependency>
+            <!--knife4j依赖-->
+            <dependency>
+                <groupId>com.github.xiaoymin</groupId>
+                <artifactId>knife4j-spring-boot-starter</artifactId>
+                <version>${knife4j.version}</version>
+            </dependency>
 
+
+            <!-- redisson 依赖-->
+            <dependency>
+                <groupId>org.redisson</groupId>
+                <artifactId>redisson</artifactId>
+                <version>${redisson.version}</version>
+            </dependency>
+            <!-- fastjson依赖 -->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>${ali.fastjson.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -62,16 +97,8 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>2.4.5</version>
+                <version>${spring.boot.version}</version>
             </plugin>
-
-            <!--maven 编译插件 -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>${maven-compiler-plugin.version}</version>
-            </plugin>
-            <!-- maven-surefire-plugin 测试包 -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
@@ -85,5 +112,24 @@
                 </configuration>
             </plugin>
         </plugins>
+
+
+        <pluginManagement>
+            <plugins>
+                <!--springboot的打包插件-->
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                    <version>2.4.5</version>
+                </plugin>
+                <!--maven 编译插件 -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>${maven-compiler-plugin.version}</version>
+                </plugin>
+                <!-- maven-surefire-plugin 测试包 -->
+            </plugins>
+        </pluginManagement>
     </build>
 </project>
