@@ -7,6 +7,7 @@ import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -26,10 +27,18 @@ import javax.validation.Valid;
 public class DevController1 {
 
     @ApiOperation(value = "User参数校验", notes = "Note:User参数校验")
-    @ApiImplicitParam(name = "user", value = "用户信息传入参数", required = true, paramType = "form", dataType = "UserRo", dataTypeClass = UserRo.class)
+    @ApiImplicitParam(name = "user", value = "用户信息传入参数", required = true, paramType = "form", dataTypeClass = UserRo.class)
     @PostMapping("valid/user")
-    public CommonResponse<?> validParams(@Valid UserRo user) {
+    public CommonResponse<UserRo> validParams(@Valid UserRo user) {
+        log.info(user.toString());
 
+        return CommonResponse.success(user);
+    }
+
+    @ApiOperation(value = "User参数校验 in body", notes = "Note:User参数校验")
+    @ApiImplicitParam(name = "user", value = "用户信息传入参数", required = true, dataType = "用户对象")
+    @PostMapping("valid/user-body")
+    public CommonResponse<UserRo> validParamsJson(@RequestBody @Valid UserRo user) {
         log.info(user.toString());
 
         return CommonResponse.success(user);

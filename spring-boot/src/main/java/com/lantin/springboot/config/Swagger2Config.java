@@ -38,6 +38,7 @@ public class Swagger2Config {
                 .select()
                 //  包扫描
                 .apis(RequestHandlerSelectors.basePackage(swagger2Properties.getBasePackage()))
+
                 //  选择方法上加了注解的
                 // .apis(RequestHandlerSelectors.withMethodAnnotation(ApiOperation.class))
                 .paths(PathSelectors.any())
