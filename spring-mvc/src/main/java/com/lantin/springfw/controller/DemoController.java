@@ -2,6 +2,8 @@ package com.lantin.springfw.controller;
 
 import com.lantin.springfw.domain.User;
 import com.lantin.springfw.service.DemoService;
+import lombok.extern.java.Log;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,6 +19,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 @Controller
 @RequestMapping
+@Slf4j
 public class DemoController {
 
     @Autowired
@@ -30,6 +33,14 @@ public class DemoController {
         return "demo";
     }
 
+    @RequestMapping("back")
+    public String back(){
+        return "back";
+    }
+    @RequestMapping("index")
+    public String index(){
+        return "index";
+    }
     @ResponseBody
     @RequestMapping(value = "doservice")
     public String demoService(HttpServletResponse resp) {
@@ -50,7 +61,6 @@ public class DemoController {
     @RequestMapping("return-json")
     public User returnJson() {
         User user = new User();
-
         user.setName("张三");
         user.setAge(23);
         user.setSex("男");

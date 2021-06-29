@@ -3,12 +3,15 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:aop="http://www.springframework.org/schema/aop"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans.xsd
        http://www.springframework.org/schema/context
        http://www.springframework.org/schema/context/spring-context.xsd
        http://www.springframework.org/schema/mvc
        http://www.springframework.org/schema/mvc/spring-mvc.xsd
+       http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
        ">
 
     <!-- bean definitions here -->
@@ -16,15 +19,18 @@
 
     <!--开启注解扫描-->
     <context:component-scan base-package="com.lantin.springfw"/>
+
+    <!-- 开启aop-->
+    <aop:aspectj-autoproxy/>
     <!--采用基于注解的handler mapping-->
     <mvc:annotation-driven/>
-        <!--register-default 默认为true，自动使用mvc的HttpMessageConverter 编码ISO 8859-1 针对返回html页面或者直接返回String时，这样配置-->
-        <!-- 如果返回json格式 其实无需配置-->
-        <!--<mvc:message-converters register-defaults="false">-->
-        <!--    <bean class="org.springframework.http.converter.StringHttpMessageConverter">-->
-        <!--        <property name="defaultCharset" value="utf-8"/>-->
-        <!--    </bean>-->
-        <!--</mvc:message-converters>-->
+    <!--register-default 默认为true，自动使用mvc的HttpMessageConverter 编码ISO 8859-1 针对返回html页面或者直接返回String时，这样配置-->
+    <!-- 如果返回json格式 其实无需配置-->
+    <!--<mvc:message-converters register-defaults="false">-->
+    <!--    <bean class="org.springframework.http.converter.StringHttpMessageConverter">-->
+    <!--        <property name="defaultCharset" value="utf-8"/>-->
+    <!--    </bean>-->
+    <!--</mvc:message-converters>-->
 
     <!-- 配置视图解析器 没有使用jsp可以不配置-->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -37,11 +43,11 @@
     <mvc:default-servlet-handler/>
 
     <!-- xml方式配置拦截器 -->
-    <mvc:interceptors >
-       <mvc:interceptor>
-           <mvc:mapping path="/**"/>
-           <bean class="com.lantin.springfw.interceptor.DemoInterceptor"/>
-       </mvc:interceptor>
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <bean class="com.lantin.springfw.interceptor.DemoInterceptor"/>
+        </mvc:interceptor>
     </mvc:interceptors>
 
 </beans>
