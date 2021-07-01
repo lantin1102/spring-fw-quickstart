@@ -9,6 +9,7 @@
 <html>
 <head>
     <title>Title</title>
+    <meta http-equiv="refresh" content="0;url=./index">
 </head>
 <body>
     home welcome

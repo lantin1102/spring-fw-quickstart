@@ -12,7 +12,7 @@
 </head>
 <body>
     <h2>
-        welcome
+        welcome to 后台管理
     </h2>
 </body>
 </html>

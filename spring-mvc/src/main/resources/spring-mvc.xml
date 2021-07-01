@@ -17,8 +17,8 @@
     <!-- bean definitions here -->
 
 
-    <!--开启注解扫描-->
-    <context:component-scan base-package="com.lantin.springfw"/>
+    <!--开启注解扫描 mvc扫描controller层-->
+    <context:component-scan base-package="com.lantin.spring.controller"/>
 
     <!-- 开启aop-->
     <aop:aspectj-autoproxy/>
@@ -39,15 +39,16 @@
     </bean>
     <!-- 释放静态资源 因为 dispatchServlet配置了 / 匹配路径后 ，
     会覆盖tomcat的web.xml中的defaultServlet的缺省路径 / ，
-    只有tomcat的defaultServlet 才能处理静态资源 html，jsp文件等，所以这里要配置以释放静态资源-->
-    <mvc:default-servlet-handler/>
+    只有tomcat的defaultServlet 才能处理静态资源 .html,.jsp等路径的直接访问，所以这里要配置以释放静态资源
+    以便在dispatch servlet找不到路径后在使用 default servlet去匹配-->
+    <!--<mvc:default-servlet-handler/>-->
 
     <!-- xml方式配置拦截器 -->
-    <mvc:interceptors>
-        <mvc:interceptor>
-            <mvc:mapping path="/**"/>
-            <bean class="com.lantin.springfw.interceptor.DemoInterceptor"/>
-        </mvc:interceptor>
-    </mvc:interceptors>
+    <!--<mvc:interceptors>-->
+    <!--    <mvc:interceptor>-->
+    <!--        <mvc:mapping path="/**"/>-->
+    <!--        <bean class="com.lantin.spring.interceptor.DemoInterceptor"/>-->
+    <!--    </mvc:interceptor>-->
+    <!--</mvc:interceptors>-->
 
 </beans>

@@ -1,0 +1,6 @@
+redisson:
+  address: redis://127.0.0.1:6379
+  connect-timeout: 2000
+  timeout: 10000
+  password: 123456
+  database: 1
