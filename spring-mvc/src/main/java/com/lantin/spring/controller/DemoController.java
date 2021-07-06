@@ -1,11 +1,13 @@
 package com.lantin.spring.controller;
 
+import com.lantin.spring.common.CommonResponse;
 import com.lantin.spring.domain.User;
 import com.lantin.spring.service.DemoService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -33,23 +35,23 @@ public class DemoController {
     }
 
     @RequestMapping("back")
-    public String back(){
+    public String back() {
         return "back";
     }
+
     @RequestMapping("index")
-    public String index(){
+    public String index() {
         return "index";
     }
+
     @ResponseBody
-    @RequestMapping(value = "doservice")
-    public String demoService(HttpServletResponse resp) {
+    @GetMapping(value = "do-service")
+    public CommonResponse<?> demoService(HttpServletResponse resp) {
         //这个对响应的中文无效，会被MVC内部的MessageConverter转换器的默认编码ISO 8859-1覆盖覆盖
         // resp.setContentType("text/html;charset=utf-8");
-
         String s = demoService.demoService();
-        return s;
+        return CommonResponse.success();
     }
-
 
     /**
      * 响应json类型数据
@@ -66,6 +68,4 @@ public class DemoController {
 
         return user;
     }
-
-
 }

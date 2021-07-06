@@ -22,6 +22,8 @@
 
     <!-- 开启aop-->
     <aop:aspectj-autoproxy/>
+    <!-- controller层aop-->
+    <bean class="com.lantin.spring.aop.ControllerAspect"/>
     <!--采用基于注解的handler mapping-->
     <mvc:annotation-driven/>
     <!--register-default 默认为true，自动使用mvc的HttpMessageConverter 编码ISO 8859-1 针对返回html页面或者直接返回String时，这样配置-->
@@ -51,4 +53,17 @@
     <!--    </mvc:interceptor>-->
     <!--</mvc:interceptors>-->
 
+
+
+    <!--spring applicationcontext配置-->
+    <!--    &lt;!&ndash;开启注解扫描 排除controller层&ndash;&gt;-->
+    <!--    <context:component-scan base-package="com.lantin.spring">-->
+    <!--        <context:exclude-filter type="regex" expression=".*.controller.*"/>-->
+    <!--        &lt;!&ndash; 排除controller aop&ndash;&gt;-->
+    <!--        <context:exclude-filter type="assignable" expression="com.lantin.spring.aop.ControllerAspect"/>-->
+    <!--    </context:component-scan>-->
+
+    <!--    &lt;!&ndash; 开启aop&ndash;&gt;-->
+    <!--    <aop:aspectj-autoproxy/>-->
+    <!--</beans>-->
 </beans>

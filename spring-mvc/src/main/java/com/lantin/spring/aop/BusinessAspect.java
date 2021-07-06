@@ -23,7 +23,7 @@ public class BusinessAspect {
      * 增强所有Service
      */
     @Pointcut("execution(public * com.lantin.spring.service..*Service.*(..)))")
-    public void enhanceMethod(){
+    public void enhanceMethod() {
 
     }
 
@@ -38,12 +38,13 @@ public class BusinessAspect {
         rtv = new CommonResponse<>(BasicError.INTERNAL_SERVER_ERROR);
         try {
             rtv = joinPoint.proceed();
-            return rtv;
+
         } catch (Throwable throwable) {
             throwable.printStackTrace();
-            return rtv;
+            log.error("Service方法执行失败", throwable);
         } finally {
             log.info("Service方法日志结束,cost" + (System.currentTimeMillis() - methodStartTime) + "ms");
         }
+        return rtv;
     }
 }

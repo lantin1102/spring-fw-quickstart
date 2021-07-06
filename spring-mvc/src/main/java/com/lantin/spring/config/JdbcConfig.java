@@ -17,7 +17,7 @@ import javax.sql.DataSource;
  * @author Lantin
  */
 @Configuration
-@PropertySource("classpath*:property/jdbc.yml")
+@PropertySource("classpath*:property/jdbc.properties")
 public class JdbcConfig {
     @Value("${jdbc.mysql.url}")
     private String url;
