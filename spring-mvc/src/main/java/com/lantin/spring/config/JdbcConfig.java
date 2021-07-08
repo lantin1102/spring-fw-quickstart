@@ -3,6 +3,7 @@ package com.lantin.spring.config;
 import com.alibaba.druid.pool.DruidDataSource;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -17,7 +18,8 @@ import javax.sql.DataSource;
  * @author Lantin
  */
 @Configuration
-@PropertySource("classpath*:property/jdbc.properties")
+@PropertySource("classpath:property/jdbc.properties")
+@MapperScan("com.lantin.spring.mapper")
 public class JdbcConfig {
     @Value("${jdbc.mysql.url}")
     private String url;
@@ -47,9 +49,8 @@ public class JdbcConfig {
         //数据源
         sqlSessionFactoryBean.setDataSource(dataSource);
         //别名映射
-        sqlSessionFactoryBean.setTypeAliasesPackage("com.lantin.spring.domain");
+        sqlSessionFactoryBean.setTypeAliasesPackage("com.lantin.spring.model");
         //映射文件不需要配置了，我们采用的是注解mybatis。默认包扫描
-
         //驼峰映射
         org.apache.ibatis.session.Configuration configuration = new org.apache.ibatis.session.Configuration();
         configuration.setMapUnderscoreToCamelCase(true);

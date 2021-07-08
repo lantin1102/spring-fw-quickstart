@@ -1,4 +1,4 @@
-package com.lantin.spring.util;
+package com.lantin.spring.common.utils;
 
 import com.alibaba.fastjson.JSON;
 

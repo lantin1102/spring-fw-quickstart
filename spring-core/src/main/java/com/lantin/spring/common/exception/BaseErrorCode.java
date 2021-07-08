@@ -1,4 +1,4 @@
-package com.lantin.spring.exception;
+package com.lantin.spring.common.exception;
 
 /**
  * Created on 2021/06/07/18:34 周一

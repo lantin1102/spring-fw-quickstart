@@ -1,4 +1,4 @@
-package com.lantin.spring.exception;
+package com.lantin.spring.common.exception;
 
 import lombok.Getter;
 import lombok.Setter;

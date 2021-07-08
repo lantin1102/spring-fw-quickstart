@@ -1,8 +1,10 @@
-package com.lantin.spring.common;
+package com.lantin.spring.common.basic;
 
 
-import com.lantin.spring.exception.BaseErrorCode;
-import com.lantin.spring.exception.ProjectException;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.lantin.spring.common.exception.BaseErrorCode;
+import com.lantin.spring.common.exception.ProjectException;
+import com.lantin.spring.common.serializer.CustomTimeStampSerializer;
 import lombok.Data;
 
 import java.time.LocalDateTime;
@@ -20,7 +22,16 @@ public class CommonResponse<T> {
     private int code;
     private T data;
     private String message;
+    /**
+     * 序列化为long 时间戳
+     */
+    @JsonSerialize(using = CustomTimeStampSerializer.class)
     private LocalDateTime ts;
+    // private String requestId;
+
+    public CommonResponse() {
+
+    }
 
     public CommonResponse(int code) {
         this.code = code;
@@ -78,5 +89,9 @@ public class CommonResponse<T> {
 
     public static <T> CommonResponse<T> failure(String errorCode) {
         return new CommonResponse<>(COMMON_FAIL_CODE, errorCode);
+    }
+
+    public static <T> CommonResponse<T> failure(BaseErrorCode errorCode) {
+        return new CommonResponse<>(errorCode.getCode(), errorCode.getMsg());
     }
 }

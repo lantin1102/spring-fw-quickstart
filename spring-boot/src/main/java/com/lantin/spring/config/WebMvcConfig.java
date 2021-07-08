@@ -29,6 +29,9 @@ import java.time.LocalTime;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * @author Lantin
+ */
 // @Configuration
 public class WebMvcConfig implements WebMvcConfigurer {
 
@@ -119,5 +122,4 @@ public class WebMvcConfig implements WebMvcConfigurer {
             }
         }
     }
-
 }

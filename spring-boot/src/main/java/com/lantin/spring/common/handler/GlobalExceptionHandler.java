@@ -1,8 +1,8 @@
-package com.lantin.spring.handler;
+package com.lantin.spring.common.handler;
 
-import com.lantin.spring.common.CommonResponse;
-import com.lantin.spring.exception.BasicError;
-import com.lantin.spring.exception.ProjectException;
+import com.lantin.spring.common.basic.CommonResponse;
+import com.lantin.spring.common.exception.BasicError;
+import com.lantin.spring.common.exception.ProjectException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.support.DefaultMessageSourceResolvable;
 import org.springframework.http.HttpStatus;

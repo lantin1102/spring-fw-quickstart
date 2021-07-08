@@ -55,7 +55,7 @@
     <!--spring和springmvc整合：将spring容器告知springmvc-->
     <context-param>
         <param-name>contextConfigLocation</param-name>
-        <param-value>classpath:spring/application-*.xml</param-value>
+        <param-value>classpath*:spring/*.xml</param-value>
     </context-param>
 
     <listener>

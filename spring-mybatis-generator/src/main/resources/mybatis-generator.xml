@@ -3,46 +3,58 @@
         PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
         "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 <generatorConfiguration>
-    <!-- 数据库驱动：选择文件实际地理位置 -->
+    <!-- 数据库驱动：选择maven仓库中文件实际位置 -->
     <classPathEntry
-            location="J:\develop\maven\repository\mysql\mysql-connector-java\5.1.34\mysql-connector-java-5.1.34.jar"/>
+            location="D:\Develop\m2_repository\mysql\mysql-connector-java\5.1.47\mysql-connector-java-5.1.47.jar"/>
 
-    <context id="default" targetRuntime="MyBatis3">
-        <commentGenerator>
+    <context id="mybatisContext" targetRuntime="MyBatis3" defaultModelType="flat">
+        <!-- 字段分隔符-->
+        <property name="beginningDelimiter" value="`"/>
+        <property name="endingDelimiter" value="`"/>
+        <!-- 插件-->
+        <!-- 实体类生成ToString-->
+        <!--<plugin type="com.itheima.travel.plugin.ToStringPlugin"/>-->
+        <!-- 支持lombok-->
+        <plugin type="com.lantin.plugins.LombokPlugin"/>
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
+
+        <commentGenerator type="com.lantin.plugins.CommentGenerator">
             <property name="suppressDate" value="true"/>
             <!-- 是否去除自动生成的注释 true：是 ： false:否 -->
-            <property name="suppressAllComments" value="true"/>
+            <property name="suppressAllComments" value="false"/>
         </commentGenerator>
 
         <!--数据库链接URL，用户名、密码 -->
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://127.0.0.1/extsystem" userId="root"
+                        connectionURL="jdbc:mysql://127.0.0.1:3306/spring"
+                        userId="root"
                         password="root">
         </jdbcConnection>
 
-        <!--<javaTypeResolver>-->
-        <!--<property name="forceBigDecimals" value="false"/>-->
-        <!--</javaTypeResolver>-->
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
 
         <!-- 生成模型的包名和位置 -->
         <javaModelGenerator
-                targetPackage="com.extSystem.generator.model"
+                targetPackage="com.lantin.generator.model"
                 targetProject="src/main/java">
             <!-- 是否允许子包，即targetPackage.schemaName.tableName -->
             <property name="enableSubPackages" value="true"/>
             <!-- 是否对model添加 构造函数 -->
-            <!--<property name="constructorBased" value="true"/>-->
+            <property name="constructorBased" value="false"/>
             <!-- 是否对类CHAR类型的列的数据进行trim操作 （去空）-->
             <property name="trimStrings" value="true"/>
             <!-- 建立的Model对象是否 不可改变  即生成的Model对象不会有 setter方法，只有构造方法 -->
-            <!--<property name="immutable" value="false"/>-->
+            <property name="immutable" value="true"/>
         </javaModelGenerator>
 
         <!-- 生成映射文件的包名和位置 -->
         <!-- 映射文件生成所在的目录为每一个数据库的表生成对应的SqlMap文件 -->
-        <sqlMapGenerator targetPackage="mapping"
-                         targetProject="src/main/resources/generator">
+        <sqlMapGenerator targetPackage="mapper"
+                         targetProject="src/main/resources">
             <property name="enableSubPackages" value="true"/>
+            <property name="" value=""/>
         </sqlMapGenerator>
 
 
@@ -54,16 +66,23 @@
 
         <!-- 生成DAO的包名和位置 -->
         <javaClientGenerator type="XMLMAPPER"
-                             targetPackage="com.extSystem.generator.dao"
+                             targetPackage="com.lantin.generator.mapper"
                              targetProject="src/main/java">
             <!-- enableSubPackages:是否让schema作为包的后缀 -->
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 
         <!-- 要生成的表(数据库中的表名或视图名)-->
+
+        <!--enableInsert="true"-->
+        <!--enableCountByExample="true"-->
+        <!--enableUpdateByExample="true" enableDeleteByExample="true"-->
+        <!--enableSelectByExample="true" selectByExampleQueryId="true"-->
         <!-- domainObjectName是实体类名 -->
-        <table tableName="user" domainObjectName="User" enableCountByExample="true"
-               enableUpdateByExample="true" enableDeleteByExample="true"
-               enableSelectByExample="true" selectByExampleQueryId="true"/>
+        <!-- table Name 值为 % 表示通配库下所有表-->
+        <table tableName="account">
+            <generatedKey column="id" sqlStatement="MySql"/>
+        </table>
     </context>
+
 </generatorConfiguration>

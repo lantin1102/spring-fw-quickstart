@@ -1,7 +1,7 @@
 package com.lantin.spring.controller;
 
-import com.lantin.spring.common.CommonResponse;
-import com.lantin.spring.domain.User;
+import com.lantin.spring.common.basic.CommonResponse;
+import com.lantin.spring.model.User;
 import com.lantin.spring.service.DemoService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +22,6 @@ import javax.servlet.http.HttpServletResponse;
 @RequestMapping
 @Slf4j
 public class DemoController {
-
     @Autowired
     private DemoService demoService;
 

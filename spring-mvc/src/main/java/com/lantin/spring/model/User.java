@@ -1,4 +1,4 @@
-package com.lantin.spring.domain;
+package com.lantin.spring.model;
 
 /**
  * Created on 2021/05/19/10:45 周三

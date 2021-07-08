@@ -1,0 +1,56 @@
+<!--<?xml version="1.0" encoding="UTF-8"?>-->
+<!--<beans xmlns="http://www.springframework.org/schema/beans"-->
+<!--       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"-->
+<!--       xmlns:context="http://www.springframework.org/schema/context"-->
+<!--       xsi:schemaLocation="http://www.springframework.org/schema/beans-->
+<!--       http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">-->
+
+<!--    &lt;!&ndash; bean definitions here &ndash;&gt;-->
+
+<!--    &lt;!&ndash;导入外部配置&ndash;&gt;-->
+<!--    <context:property-placeholder location="classpath:property/jdbc.properties"/>-->
+
+<!--    &lt;!&ndash; 数据库连接池 &ndash;&gt;-->
+<!--    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">-->
+<!--        <property name="password" value="${jdbc.mysql.password}"/>-->
+<!--        <property name="username" value="${jdbc.mysql.username}"/>-->
+<!--        <property name="url" value="${jdbc.mysql.url}"/>-->
+<!--        <property name="driverClassName" value="${jdbc.mysql.driver-class-name}"/>-->
+<!--    </bean>-->
+
+<!--    &lt;!&ndash;sqlSessionFactory&ndash;&gt;-->
+<!--    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">-->
+<!--        &lt;!&ndash;配置数据源&ndash;&gt;-->
+<!--        <property name="dataSource" ref="dataSource"/>-->
+<!--        &lt;!&ndash;mybatis的配置文件,此处的配置和下面的configuration配置冲突&ndash;&gt;-->
+<!--        &lt;!&ndash;-->
+<!--                <property name="configLocation" value="classpath:mybatis-config.xml"></property>-->
+<!--        &ndash;&gt;-->
+<!--        &lt;!&ndash; 别名映射&ndash;&gt;-->
+<!--        <property name="typeAliasesPackage" value="com.lantin.spring.model"/>-->
+<!--        &lt;!&ndash; mapper的xml映射文件位置 &ndash;&gt;-->
+<!--        <property name="mapperLocations" value="classpath:mapper/*.xml"/>-->
+<!--        &lt;!&ndash; 配置setting中的配置&ndash;&gt;-->
+<!--        <property name="configuration">-->
+<!--            <bean class="org.apache.ibatis.session.Configuration">-->
+<!--                <property name="mapUnderscoreToCamelCase" value="true"/>-->
+<!--            </bean>-->
+<!--        </property>-->
+<!--    </bean>-->
+
+<!--    &lt;!&ndash; 创建单个mapper对象&ndash;&gt;-->
+<!--    &lt;!&ndash; dao对象&ndash;&gt;-->
+<!--    &lt;!&ndash;-->
+<!--        <bean id="customerDao" class="org.mybatis.spring.mapper.MapperFactoryBean">-->
+<!--            &lt;!&ndash; 依赖注入sqlSessionFactory&ndash;&gt;-->
+<!--            <property name="sqlSessionFactory" ref="sqlSessionFactory"></property>-->
+<!--            &lt;!&ndash;依赖注入 接口类型&ndash;&gt;-->
+<!--            <property name="mapperInterface" value="com.itheima.dao.CustomerDao"></property>-->
+<!--        </bean>&ndash;&gt;-->
+<!--    &lt;!&ndash; 包扫描的方式创建&ndash;&gt;-->
+<!--    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">-->
+<!--        <property name="basePackage" value="com.lantin.spring.mapper"/>-->
+<!--        &lt;!&ndash; optional unless there are multiple session factories defined &ndash;&gt;-->
+<!--        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>-->
+<!--    </bean>-->
+<!--</beans>-->

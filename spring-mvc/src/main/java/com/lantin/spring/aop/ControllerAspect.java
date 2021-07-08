@@ -1,14 +1,17 @@
 package com.lantin.spring.aop;
 
 
-import com.lantin.spring.common.CommonResponse;
-import com.lantin.spring.exception.BasicError;
+import com.lantin.spring.common.basic.CommonResponse;
+import com.lantin.spring.common.basic.ControllerContext;
+import com.lantin.spring.common.exception.BasicError;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Component;
+
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * Created on 2021/06/25/17:56 周五
@@ -27,21 +30,21 @@ public class ControllerAspect {
 
     @Around("enhanceMethod()")
     public Object around(ProceedingJoinPoint joinPoint) {
-        log.info("Controller方法日志开始");
         String className = joinPoint.getTarget().getClass().getSimpleName();
         String methodName = joinPoint.getSignature().getName();
+        HttpServletRequest request = ControllerContext.getRequest();
+        String requestUri = request.getRequestURI();
         long methodStartTime = System.currentTimeMillis();
-        log.info("request: {}|{}|{}" + className + methodName + methodStartTime);
+        log.info("request: {}|{}|{}", className, requestUri, methodName);
         Object rtv;
         rtv = new CommonResponse<>(BasicError.INTERNAL_SERVER_ERROR);
         try {
             rtv = joinPoint.proceed();
-            return rtv;
         } catch (Throwable throwable) {
             throwable.printStackTrace();
-            return rtv;
         } finally {
-            log.info("controller方法日志结束,cost" + (System.currentTimeMillis() - methodStartTime) + "ms");
+            log.info("controller方法日志结束,cost:{}ms", (System.currentTimeMillis() - methodStartTime));
         }
+        return rtv;
     }
 }

@@ -1,7 +1,9 @@
-package com.lantin.spring.util;
+package com.lantin.spring.common.utils;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
@@ -82,5 +84,14 @@ public class DateUtils {
             e.printStackTrace();
             throw new IllegalArgumentException("can not parse " + date + " to Date");
         }
+    }
+
+    public static long dateTimeToMillis(Object dateObj) {
+        long timestamp = 0;
+        if (dateObj instanceof LocalDateTime) {
+            LocalDateTime localDateTime = (LocalDateTime) dateObj;
+            timestamp = localDateTime.atZone(ZoneId.systemDefault()).toInstant().toEpochMilli();
+        }
+        return timestamp;
     }
 }

@@ -1,6 +1,6 @@
 package com.lantin.spring.controller;
 
-import com.lantin.spring.common.CommonResponse;
+import com.lantin.spring.common.basic.CommonResponse;
 import com.lantin.spring.service.RedisLockService;
 import lombok.extern.slf4j.Slf4j;
 import org.redisson.api.RLock;
