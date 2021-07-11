@@ -15,7 +15,6 @@
         <module>spring-common</module>
     </modules>
     <packaging>pom</packaging>
-
     <properties>
         <!--项目属性，插件版本管理-->
         <java.version>11</java.version>

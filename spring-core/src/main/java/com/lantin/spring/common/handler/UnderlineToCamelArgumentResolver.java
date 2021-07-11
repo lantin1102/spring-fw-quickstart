@@ -77,7 +77,7 @@ public class UnderlineToCamelArgumentResolver implements HandlerMethodArgumentRe
     private String nameFromUnderLineToCamel(String source) {
 
         Matcher matcher = UNDER_LINE_PATTERN.matcher(source);
-        StringBuilder result = new StringBuilder();
+        StringBuffer result = new StringBuffer();
         while (matcher.find()) {
             matcher.appendReplacement(result, matcher.group(1).toUpperCase());
         }

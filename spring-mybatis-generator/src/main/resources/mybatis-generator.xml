@@ -5,7 +5,7 @@
 <generatorConfiguration>
     <!-- 数据库驱动：选择maven仓库中文件实际位置 -->
     <classPathEntry
-            location="D:\Develop\m2_repository\mysql\mysql-connector-java\5.1.47\mysql-connector-java-5.1.47.jar"/>
+            location="D:\Develop\java\m2_repository\mysql\mysql-connector-java\5.1.47\mysql-connector-java-5.1.47.jar"/>
 
     <context id="mybatisContext" targetRuntime="MyBatis3" defaultModelType="flat">
         <!-- 字段分隔符-->

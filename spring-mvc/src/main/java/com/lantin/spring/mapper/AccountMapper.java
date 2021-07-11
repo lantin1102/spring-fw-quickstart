@@ -3,13 +3,13 @@ package com.lantin.spring.mapper;
 
 import com.lantin.spring.model.Account;
 import com.lantin.spring.model.example.AccountExample;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
-
 /**
- * @author Lantin
+ * @author lanti
  */
 public interface AccountMapper {
     long countByExample(AccountExample example);

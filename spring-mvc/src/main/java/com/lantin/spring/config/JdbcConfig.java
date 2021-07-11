@@ -1,6 +1,7 @@
 package com.lantin.spring.config;
 
 import com.alibaba.druid.pool.DruidDataSource;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.annotation.MapperScan;
@@ -9,8 +10,10 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 
 import javax.sql.DataSource;
+import java.io.IOException;
 
 /**
  * Created on 2021/07/01/16:51 周四
@@ -20,6 +23,7 @@ import javax.sql.DataSource;
 @Configuration
 @PropertySource("classpath:property/jdbc.properties")
 @MapperScan("com.lantin.spring.mapper")
+@Slf4j
 public class JdbcConfig {
     @Value("${jdbc.mysql.url}")
     private String url;
@@ -50,6 +54,13 @@ public class JdbcConfig {
         sqlSessionFactoryBean.setDataSource(dataSource);
         //别名映射
         sqlSessionFactoryBean.setTypeAliasesPackage("com.lantin.spring.model");
+        PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
+        try {
+            sqlSessionFactoryBean.setMapperLocations((resolver.getResources("classpath:mapper/*Mapper.xml")));
+        } catch (IOException e) {
+            log.error("读取mapper.xml文件异常");
+        }
+
         //映射文件不需要配置了，我们采用的是注解mybatis。默认包扫描
         //驼峰映射
         org.apache.ibatis.session.Configuration configuration = new org.apache.ibatis.session.Configuration();
