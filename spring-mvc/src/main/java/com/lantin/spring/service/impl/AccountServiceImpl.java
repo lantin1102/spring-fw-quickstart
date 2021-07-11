@@ -6,6 +6,7 @@ import com.lantin.spring.model.Account;
 import com.lantin.spring.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Created on 2021/07/07/11:57 周三
@@ -19,6 +20,7 @@ public class AccountServiceImpl implements AccountService {
     private AccountMapper accountMapper;
 
     @Override
+    @Transactional
     public Account getUserById(String id) {
 
         return accountMapper.selectByPrimaryKey(Integer.parseInt(id));
