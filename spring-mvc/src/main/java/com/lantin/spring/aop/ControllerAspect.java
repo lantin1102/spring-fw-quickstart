@@ -1,9 +1,7 @@
 package com.lantin.spring.aop;
 
 
-import com.lantin.common.enums.BasicError;
-import com.lantin.core.basic.CommonResponse;
-import com.lantin.spring.common.utils.ServletUtils;
+import com.lantin.common.utils.ServletUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;

@@ -47,7 +47,7 @@
     会覆盖tomcat的web.xml中的defaultServlet的缺省路径 / ，
     只有tomcat的defaultServlet 才能处理静态资源 .html,.jsp等路径的直接访问，所以这里要配置以释放静态资源
     以便在dispatch servlet找不到路径后在使用 default servlet去匹配-->
-    <!--<mvc:default-servlet-handler/>-->
+    <mvc:default-servlet-handler/>
 
     <!-- xml方式配置拦截器 -->
     <!--<mvc:interceptors>-->

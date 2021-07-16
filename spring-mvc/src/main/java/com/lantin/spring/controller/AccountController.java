@@ -1,6 +1,8 @@
 package com.lantin.spring.controller;
 
-import com.lantin.spring.core.basic.CommonResponse;
+
+import com.lantin.common.enums.BasicError;
+import com.lantin.core.basic.CommonResponse;
 import com.lantin.spring.model.Account;
 import com.lantin.spring.service.AccountService;
 import org.apache.commons.lang3.StringUtils;

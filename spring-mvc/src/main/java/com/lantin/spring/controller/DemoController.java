@@ -1,6 +1,7 @@
 package com.lantin.spring.controller;
 
-import com.lantin.spring.core.basic.CommonResponse;
+
+import com.lantin.core.basic.CommonResponse;
 import com.lantin.spring.model.User;
 import com.lantin.spring.service.DemoService;
 import lombok.extern.slf4j.Slf4j;
@@ -48,6 +49,7 @@ public class DemoController {
     public CommonResponse<?> demoService(HttpServletResponse resp) {
         //这个对响应的中文无效，会被MVC内部的MessageConverter转换器的默认编码ISO 8859-1覆盖覆盖
         // resp.setContentType("text/html;charset=utf-8");
+        int a = 1 / 0;
         String s = demoService.demoService();
         return CommonResponse.success();
     }
