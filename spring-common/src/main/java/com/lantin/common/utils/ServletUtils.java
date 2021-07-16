@@ -4,6 +4,7 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 /**
  * Created on 2021/07/16/21:57 周五
@@ -22,5 +23,7 @@ public class ServletUtils {
         return getServletAttribute().getRequest();
     }
 
-
+    public static HttpSession getSession() {
+        return getRequest().getSession();
+    }
 }

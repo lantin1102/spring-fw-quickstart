@@ -23,7 +23,6 @@ import java.io.IOException;
  * @author Lantin
  */
 @Configuration
-@PropertySource("classpath:property/jdbc.properties")
 @MapperScan("com.lantin.spring.mapper")
 @Slf4j
 public class JdbcConfig {
