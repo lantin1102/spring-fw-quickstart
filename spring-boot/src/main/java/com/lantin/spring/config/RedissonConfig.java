@@ -34,7 +34,7 @@ public class RedissonConfig {
     private int database;
 
     @Bean
-    public RedissonClient client() throws IOException {
+    public RedissonClient redissonClient() throws IOException {
         // Config config = new Config();
         // config.useSingleServer()
         //         .setAddress(address)

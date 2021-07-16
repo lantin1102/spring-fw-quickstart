@@ -1,23 +1,24 @@
 package com.lantin.spring.common.exception;
 
 /**
- * Created on 2021/06/17/14:18 周四
+ * Created on 2021/07/14/12:08 周三
  *
  * @author Lantin
  */
-public enum BasicError implements BaseErrorCode {
-    //  参数非法
-    INTERNAL_SERVER_ERROR(10005, "服务器内部异常"),
-    REQ_LIMIT(10004, "请求过快"),
-    PARAMS_INVALID(10009, "参数校验不通过");
+public enum AccountError implements BaseErrorCode {
+    /**
+     * 账户相关异常
+     */
+    SAVE_ACCOUNT_FAIL(11001, "创建账户失败");
 
     private final int code;
     private final String desc;
 
-    BasicError(int code, String desc) {
+    AccountError(int code, String desc) {
         this.code = code;
         this.desc = desc;
     }
+
 
     @Override
     public int getCode() {

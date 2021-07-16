@@ -20,6 +20,10 @@
     <!--开启注解扫描 mvc扫描controller层-->
     <context:component-scan base-package="com.lantin.spring.controller"/>
 
+    <context:component-scan base-package="com.lantin.spring.config" use-default-filters="false">
+        <context:include-filter type="assignable" expression="com.lantin.spring.config.WebMvcConfig"/>
+    </context:component-scan>
+
     <!-- 开启aop-->
     <aop:aspectj-autoproxy/>
     <!-- controller层aop-->
@@ -52,7 +56,6 @@
     <!--        <bean class="com.lantin.spring.interceptor.DemoInterceptor"/>-->
     <!--    </mvc:interceptor>-->
     <!--</mvc:interceptors>-->
-
 
 
     <!--spring applicationcontext配置-->

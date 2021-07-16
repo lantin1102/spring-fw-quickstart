@@ -13,11 +13,13 @@ import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalTimeSerializer;
 import com.lantin.spring.common.utils.DateUtils;
+import com.lantin.spring.interceptor.TestInterceptor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.format.FormatterRegistry;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
-import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
@@ -32,20 +34,22 @@ import java.util.List;
 /**
  * @author Lantin
  */
-// @Configuration
+@Configuration
 public class WebMvcConfig implements WebMvcConfigurer {
 
+    @Autowired
+    TestInterceptor testInterceptor;
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        // registry.addInterceptor(this.logInterceptor).addPathPatterns("/**");
+        registry.addInterceptor(testInterceptor).addPathPatterns("/**");
     }
 
-    @Override
-    public void addArgumentResolvers(List<HandlerMethodArgumentResolver> resolvers) {
-        // WebMvcConfigurer.super.addArgumentResolvers(resolvers);
-        // resolvers.add(new UnderlineToCamelArgumentResolver());
-    }
+    // @Override
+    // public void addArgumentResolvers(List<HandlerMethodArgumentResolver> resolvers) {
+    // WebMvcConfigurer.super.addArgumentResolvers(resolvers);
+    // resolvers.add(new UnderlineToCamelArgumentResolver());
+    // }
 
     //  此方法添加用来格式化的数据类型转换器
     @Override

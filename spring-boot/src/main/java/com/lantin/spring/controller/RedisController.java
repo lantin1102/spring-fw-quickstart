@@ -1,8 +1,10 @@
 package com.lantin.spring.controller;
 
 import com.lantin.spring.common.basic.CommonResponse;
+import com.lantin.spring.common.exception.BasicError;
 import com.lantin.spring.service.RedisLockService;
 import lombok.extern.slf4j.Slf4j;
+import org.redisson.api.RBucket;
 import org.redisson.api.RLock;
 import org.redisson.api.RedissonClient;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -65,5 +67,27 @@ public class RedisController {
         String redisKey = String.format("redis.template.key&%s", uid);
         stringRedisTemplate.opsForValue().set(redisKey, uid);
         return CommonResponse.success();
+    }
+
+    @GetMapping("incr/drawNum")
+    public CommonResponse<Object> fangLianDian(String activityId, String mid) {
+
+        String key = String.format("redis.fangliandian:%s:%s", activityId, mid);
+        RBucket<Object> bucket = redissonClient.getBucket(key);
+        boolean flag = bucket.trySet(System.currentTimeMillis(), 1000, TimeUnit.MILLISECONDS);
+        if (!flag) {
+            return CommonResponse.failure(BasicError.REQ_LIMIT);
+        }
+        log.info("处理业务");
+
+        return CommonResponse.success();
+    }
+
+    public static void main(String[] args) {
+
+        String activityId = "3213";
+        String mid = "abc";
+        String key = String.format("redis.fangliandian:%s:%s", activityId, mid);
+
     }
 }

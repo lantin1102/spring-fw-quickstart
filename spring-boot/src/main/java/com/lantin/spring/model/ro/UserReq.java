@@ -21,7 +21,7 @@ import javax.validation.constraints.NotNull;
 @NoArgsConstructor
 // @JsonInclude(JsonInclude.Include.NON_NULL)
 @ApiModel(description = "用户信息传入参数封装类", value = "用户对象")
-public class UserRo {
+public class UserReq {
 
     // MultipartFile file;
     @NotEmpty(message = "姓名不能为空")

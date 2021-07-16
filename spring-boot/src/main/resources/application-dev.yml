@@ -16,7 +16,7 @@ spring:
   # mysql数据源相关配置 type配置不同的数据源
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
-    url: jdbc:mysql://localhost:3306/shiro?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
+    url: jdbc:mysql://localhost:3306/spring?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
     username: root
     password: root
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -45,11 +45,10 @@ redisson:
   timeout: 10000
   password: 123456
   database: 1
-
 lantin:
   framework:
     swagger2:
-      base-package: com.lantin.springboot.controller
+      base-package: com.lantin.spring.controller
   thread-pool:
     core-pool-size: 5
     max-pool-size: 10
@@ -57,5 +56,14 @@ lantin:
     keep-alive-seconds: 60
     queue-capacity: 100
     thread-name-prefix: lantin-testThread-
-
-
+mybatis:
+  mapper-locations: mapper/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+    cache-enabled: true
+    # 开启主键回填 插入后在发送一条select last_insert_id()
+    use-generated-keys: true
+  type-aliases-package: com.lantin.spring.model
+logging:
+  level:
+    com.lantin.spring: debug

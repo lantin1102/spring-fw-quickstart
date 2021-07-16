@@ -1,4 +1,4 @@
-package com.lantin.spring.common.handler;
+package com.lantin.spring.handler;
 
 import com.lantin.spring.common.basic.CommonResponse;
 import com.lantin.spring.common.exception.BasicError;

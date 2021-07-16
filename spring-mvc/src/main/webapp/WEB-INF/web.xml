@@ -52,12 +52,13 @@
         <url-pattern>/*</url-pattern>
     </filter-mapping>
 
-    <!--spring和springmvc整合：将spring容器告知springmvc-->
+    <!-- 加载spring的applicationContext-->
     <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>classpath*:spring/*.xml</param-value>
     </context-param>
 
+    <!--spring和springmvc整合：将spring容器告知springmvc-->
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
