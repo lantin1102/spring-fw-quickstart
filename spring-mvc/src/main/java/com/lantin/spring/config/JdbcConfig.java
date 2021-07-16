@@ -36,7 +36,6 @@ public class JdbcConfig {
     @Value("${jdbc.mysql.driver-class-name}")
     private String driverClass;
 
-
     @Bean("druidDataSource")
     public DataSource dataSource() {
         DruidDataSource dataSource = new DruidDataSource();
