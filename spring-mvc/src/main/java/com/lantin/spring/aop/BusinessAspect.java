@@ -1,7 +1,5 @@
 package com.lantin.spring.aop;
 
-import com.lantin.spring.common.basic.CommonResponse;
-import com.lantin.spring.common.exception.BasicError;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -28,18 +26,17 @@ public class BusinessAspect {
     }
 
     @Around("enhanceMethod()")
-    public Object around(ProceedingJoinPoint joinPoint) {
+    public Object around(ProceedingJoinPoint joinPoint) throws Throwable {
         String className = joinPoint.getTarget().getClass().getSimpleName();
         String methodName = joinPoint.getSignature().getName();
         log.info("METHOD START: {}|{}", className, methodName);
         long methodStartTime = System.currentTimeMillis();
         Object rtv;
-        rtv = new CommonResponse<>(BasicError.INTERNAL_SERVER_ERROR);
         try {
             rtv = joinPoint.proceed();
-
         } catch (Throwable throwable) {
             log.error("Service方法执行失败", throwable);
+            throw throwable;
         } finally {
             log.info("Service METHOD END,cost:{}ms", (System.currentTimeMillis() - methodStartTime));
         }

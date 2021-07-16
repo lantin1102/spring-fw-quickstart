@@ -19,7 +19,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
  */
 @Configuration
 @ComponentScan("com.lantin.spring.interceptor")
-@EnableWebMvc
 public class WebMvcConfig implements WebMvcConfigurer {
 
     @Autowired
