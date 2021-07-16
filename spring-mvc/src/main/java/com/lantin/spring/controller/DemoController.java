@@ -1,6 +1,6 @@
 package com.lantin.spring.controller;
 
-import com.lantin.spring.common.basic.CommonResponse;
+import com.lantin.spring.core.basic.CommonResponse;
 import com.lantin.spring.model.User;
 import com.lantin.spring.service.DemoService;
 import lombok.extern.slf4j.Slf4j;

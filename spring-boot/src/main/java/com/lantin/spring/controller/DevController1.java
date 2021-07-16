@@ -1,6 +1,7 @@
 package com.lantin.spring.controller;
 
-import com.lantin.spring.common.basic.CommonResponse;
+
+import com.lantin.core.basic.CommonResponse;
 import com.lantin.spring.model.ro.UserReq;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;

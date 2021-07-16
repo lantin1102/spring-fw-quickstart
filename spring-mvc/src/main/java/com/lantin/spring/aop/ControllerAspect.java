@@ -1,9 +1,9 @@
 package com.lantin.spring.aop;
 
 
-import com.lantin.spring.common.basic.CommonResponse;
-import com.lantin.spring.common.basic.ControllerContext;
-import com.lantin.spring.common.exception.BasicError;
+import com.lantin.common.enums.BasicError;
+import com.lantin.core.basic.CommonResponse;
+import com.lantin.spring.common.utils.ServletUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -29,19 +29,19 @@ public class ControllerAspect {
     }
 
     @Around("enhanceMethod()")
-    public Object around(ProceedingJoinPoint joinPoint) {
+    public Object around(ProceedingJoinPoint joinPoint) throws Throwable {
         String className = joinPoint.getTarget().getClass().getSimpleName();
         String methodName = joinPoint.getSignature().getName();
-        HttpServletRequest request = ControllerContext.getRequest();
+        HttpServletRequest request = ServletUtils.getRequest();
         String requestUri = request.getRequestURI();
         long methodStartTime = System.currentTimeMillis();
         log.info("request: {}|{}|{}", className, requestUri, methodName);
         Object rtv;
-        rtv = new CommonResponse<>(BasicError.INTERNAL_SERVER_ERROR);
         try {
             rtv = joinPoint.proceed();
         } catch (Throwable throwable) {
             throwable.printStackTrace();
+            throw throwable;
         } finally {
             log.info("controller方法日志结束,cost:{}ms", (System.currentTimeMillis() - methodStartTime));
         }

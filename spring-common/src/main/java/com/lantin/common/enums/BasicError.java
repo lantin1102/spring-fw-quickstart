@@ -1,4 +1,4 @@
-package com.lantin.spring.common.exception;
+package com.lantin.common.enums;
 
 /**
  * Created on 2021/06/17/14:18 周四

@@ -26,7 +26,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
     @Autowired
     DemoInterceptor demoInterceptor;
 
-    @Bean("myinter")
+    @Bean
     public MyInterceptor myInterceptor() {
         return new MyInterceptor();
     }
