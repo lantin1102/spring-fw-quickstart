@@ -17,8 +17,8 @@
         <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
         <context:exclude-filter type="annotation" expression="org.springframework.web.bind.annotation.RestController"/>
         <context:exclude-filter type="assignable" expression="com.lantin.spring.aop.ControllerAspect"/>
-        <context:exclude-filter type="assignable" expression="com.lantin.spring.config.WebMvcConfig"/>
-        <context:exclude-filter type="regex" expression=".*.interceptor.*"/>
+        <!--<context:exclude-filter type="assignable" expression="com.lantin.spring.config.WebMvcConfig"/>-->
+        <!--<context:exclude-filter type="regex" expression=".*.interceptor.*"/>-->
     </context:component-scan>
     <!-- 加载properties文件-->
     <context:property-placeholder location="classpath*:property/*"/>

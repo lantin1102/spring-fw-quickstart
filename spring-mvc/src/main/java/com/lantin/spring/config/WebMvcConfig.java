@@ -7,9 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.config.annotation.*;
 
 /**
  * Created on 2021/07/07/15:03 周三
@@ -18,29 +16,22 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
  * //
  */
 @Configuration
-@ComponentScan("com.lantin.spring.interceptor")
 public class WebMvcConfig implements WebMvcConfigurer {
 
     @Autowired
     AuthorizationInterceptor authorizationInterceptor;
     @Autowired
     DemoInterceptor demoInterceptor;
-
-    @Bean
-    public MyInterceptor myInterceptor() {
-        return new MyInterceptor();
-    }
+    @Autowired
+    MyInterceptor myInterceptor;
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        WebMvcConfigurer.super.addInterceptors(registry);
         registry.addInterceptor(authorizationInterceptor)
                 .addPathPatterns("/**");
         registry.addInterceptor(demoInterceptor)
                 .addPathPatterns("/**");
-        registry.addInterceptor(myInterceptor())
+        registry.addInterceptor(myInterceptor)
                 .addPathPatterns("/**");
     }
-
-
 }

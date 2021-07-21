@@ -3,7 +3,7 @@ package com.lantin.spring.controller;
 
 import com.lantin.core.basic.CommonResponse;
 import com.lantin.spring.model.User;
-import com.lantin.spring.service.DemoService;
+import com.lantin.spring.config.service.DemoService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

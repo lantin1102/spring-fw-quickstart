@@ -5,7 +5,7 @@ import com.lantin.common.enums.BasicError;
 import com.lantin.core.basic.CommonResponse;
 import com.lantin.spring.model.Account;
 import com.lantin.spring.model.ro.AccountReq;
-import com.lantin.spring.service.AccountService;
+import com.lantin.spring.config.service.AccountService;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;

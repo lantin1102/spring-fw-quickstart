@@ -1,6 +1,6 @@
-package com.lantin.spring.service.impl;
+package com.lantin.spring.config.service.impl;
 
-import com.lantin.spring.service.DemoService;
+import com.lantin.spring.config.service.DemoService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 

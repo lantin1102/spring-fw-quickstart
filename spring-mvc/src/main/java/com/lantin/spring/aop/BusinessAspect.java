@@ -20,7 +20,7 @@ public class BusinessAspect {
     /**
      * 增强所有Service
      */
-    @Pointcut("execution(public * com.lantin.spring.service..*Service.*(..)))")
+    @Pointcut("execution(public * com.lantin.spring.config.service..*Service.*(..)))")
     public void enhanceMethod() {
 
     }

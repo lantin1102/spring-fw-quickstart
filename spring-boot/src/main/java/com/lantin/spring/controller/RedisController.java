@@ -2,7 +2,7 @@ package com.lantin.spring.controller;
 
 import com.lantin.common.enums.BasicError;
 import com.lantin.core.basic.CommonResponse;
-import com.lantin.spring.service.RedisLockService;
+import com.lantin.spring.config.service.RedisLockService;
 import lombok.extern.slf4j.Slf4j;
 import org.redisson.api.RBucket;
 import org.redisson.api.RLock;

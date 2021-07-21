@@ -1,6 +1,7 @@
-package com.lantin.spring.service;
+package com.lantin.spring.config.service;
 
 import com.lantin.spring.model.Account;
+import com.lantin.spring.model.ro.AccountReq;
 
 /**
  * Created on 2021/07/07/11:55 周三
@@ -17,4 +18,9 @@ public interface AccountService {
      */
     Account getUserById(String id);
 
+    /**
+     *
+     * @param account 账户封装类
+     */
+    boolean saveUserAccount(AccountReq account);
 }

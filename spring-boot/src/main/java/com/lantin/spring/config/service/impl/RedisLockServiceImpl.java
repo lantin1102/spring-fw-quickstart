@@ -1,6 +1,6 @@
-package com.lantin.spring.service.impl;
+package com.lantin.spring.config.service.impl;
 
-import com.lantin.spring.service.RedisLockService;
+import com.lantin.spring.config.service.RedisLockService;
 import lombok.extern.slf4j.Slf4j;
 import org.redisson.api.RLock;
 import org.redisson.api.RedissonClient;

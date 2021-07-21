@@ -1,6 +1,7 @@
 package com.lantin.spring.config;
 
-import com.lantin.spring.common.utils.DateUtils;
+
+import com.lantin.common.utils.DateUtils;
 import org.springframework.core.convert.converter.Converter;
 
 import java.text.ParseException;

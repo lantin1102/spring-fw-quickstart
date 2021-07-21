@@ -13,11 +13,9 @@ import javax.servlet.http.HttpSession;
  */
 public class ServletUtils {
 
-
     public static ServletRequestAttributes getServletAttribute() {
         return (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
     }
-
 
     public static HttpServletRequest getRequest() {
         return getServletAttribute().getRequest();

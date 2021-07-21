@@ -1,4 +1,4 @@
-package com.lantin.spring.service;
+package com.lantin.spring.config.service;
 
 /**
  * Created on 2021/06/23/18:00 周三

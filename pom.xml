@@ -13,6 +13,7 @@
         <module>spring-core</module>
         <module>spring-mybatis-generator</module>
         <module>spring-common</module>
+        <module>spring-mvc-ano</module>
     </modules>
     <packaging>pom</packaging>
     <properties>
